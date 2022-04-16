@@ -4,8 +4,13 @@
  */
 
 #include <Arduino.h>
-#include <ESP8266WiFi.h>  //ESP8266
-//#include <WiFi.h>           //ESP32
+#ifdef ESP32
+  #include <WiFi.h>         
+#elif defined(ESP8266)
+  #include <ESP8266WiFi.h>
+#else
+  #error "Du må bruke enten ESP8266 eller ESP32"
+#endif
 
 class DataToMaker
 {
